@@ -1,0 +1,164 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background: url('./assets/raceBg.png') no-repeat;
+  background-size: cover;
+  color: #fff;
+}
+
+ul,
+li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  border: none;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.btnWrapper {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.Btn {
+  width: 100%;
+  background: #f00;
+  border-radius: 5%;
+  color: #fff;
+  font-weight: 600;
+  padding: 1em 2em;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+
+.Btn:hover {
+  background: #fff;
+  border: solid grey 1px;
+  color: #000;
+  transition: all 0.5s ease-in-out;
+}
+
+h1,
+h2 {
+  font-size: 2rem;
+  font-weight: 900;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.main {
+  margin: 5em auto;
+  width: 80%;
+  text-align: center;
+}
+
+.main h3 {
+  margin-bottom: 2em;
+}
+/* All Tracks */
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.allTracks {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5em 1em;
+}
+
+.allTracks header {
+  text-align: center;
+}
+.trackInput {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.trackInput input {
+  padding: 1em;
+  margin-bottom: 1em;
+}
+
+.tracksWrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 2em;
+}
+.track {
+  background: #fff;
+  padding: 1em 0.5em;
+  color: #f00;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1 1 100%;
+  margin: 0.2em;
+}
+
+.track h4,
+.track p {
+  margin: 0.3em 0;
+  padding: 0.2em 0;
+  border-bottom: solid 1px grey;
+}
+
+.seeTracks {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4em 1em;
+}
+
+@media screen and (min-width: 800px) {
+  form,
+  .btnWrapper,
+  .trackInput {
+    width: 50%;
+  }
+
+  .track {
+    background: #fff;
+    padding: 1em 2em;
+    flex: 1 1 20%;
+  }
+  .seeTracks {
+    padding: 4em 5em;
+  }
+}
