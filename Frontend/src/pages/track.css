@@ -1,0 +1,155 @@
+.seeTrack {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  padding: 5em 0;
+}
+
+.seeTrackWrapper .race {
+  background: #fff;
+  padding: 1em 0.5em;
+  color: #f00;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0.2em;
+  width: 100%;
+  cursor: pointer;
+}
+
+.raceDeets {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.race h4,
+.race p {
+  margin: 0.3em 0;
+  padding: 0.2em 0;
+  border-bottom: solid 1px grey;
+}
+
+.bestRacers {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 3em;
+  width: 100%;
+}
+
+.bestRacers h1 {
+  text-align: center;
+}
+
+.bH {
+  background-color: wheat;
+}
+
+.boardHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: #000;
+  padding: 1em 0.6em;
+  width: 100%;
+}
+
+.board {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* .board small {
+  width: 23%;
+} */
+
+.leader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  text-align: start;
+  color: #f00;
+  margin-top: 1em;
+  padding: 0 0.5em;
+  width: 100%;
+}
+
+.Btns {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.addBest {
+  /* border-radius: 15%; */
+  color: #000;
+  font-weight: 600;
+  padding: 1em 0.5em;
+  background: yellow;
+  margin-top: 3em;
+}
+
+.leader p,
+.leader h4 {
+  padding: 0.1em 0;
+}
+
+.rank {
+  width: 10%;
+}
+.name {
+  width: 35%;
+  color: #000;
+}
+.time {
+  width: 20%;
+}
+.car {
+  width: 25%;
+}
+
+#BtnF {
+  margin-right: 0.5em;
+}
+
+form {
+  margin-top: 6em;
+}
+
+@media screen and (min-width: 800px) {
+  .seeTrackWrapper .race {
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0.2em;
+    width: 100%;
+  }
+  .racePic {
+    width: 60%;
+  }
+
+  .raceDeets {
+    width: 35%;
+  }
+
+  .board {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .boardHeader,
+  .leader {
+    width: 90%;
+  }
+
+  .Btns {
+    display: flex;
+    flex-direction: row;
+    width: 10%;
+  }
+}

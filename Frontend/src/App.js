@@ -15,7 +15,7 @@ function App() {
         <Route path='/' element={<Homepage />} />
         <Route path='/dashboard' element={<Admin />} />
         <Route path='/alltracks' element={<AllTracks />} />
-        <Route path='/:trackId' element={<Track />} />
+        <Route path='/racer/:trackId' element={<Track />} />
       </Routes>
     </div>
   );

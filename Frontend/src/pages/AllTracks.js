@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react';
 import { useTrackHooks } from '../Hooks/trackHooks';
 import { ImRoad } from 'react-icons/im';
-import { FaLocationArrow } from 'react-icons/fa';
-import { GiPathDistance } from 'react-icons/gi';
-import { MdDelete } from 'react-icons/md';
+import { Link } from 'react-router-dom';
 
 function AllTracks() {
   const { getAllTracks, tracksData } = useTrackHooks();
@@ -15,22 +13,17 @@ function AllTracks() {
   return (
     <main className='seeTracks'>
       <h1> Available Racing Roadways </h1>
-      <section className='tracksWrapper'>
-        {tracksData.map(({ _id, trackName, location, miles }) => (
-          <section className='track' key={_id}>
+      <section className='seeTracksWrapper'>
+        {tracksData.map(({ _id, trackName, imageUrl }) => (
+          <Link to={`/racer/${_id}`} className='races' key={_id}>
+            <div className='raceImage'>
+              <img src={imageUrl} alt='' />
+            </div>
             <h4>
               {' '}
               <ImRoad color='grey' /> {trackName}
             </h4>
-            <p>
-              {' '}
-              <FaLocationArrow color='grey' /> {location}{' '}
-            </p>
-            <p>
-              {' '}
-              <GiPathDistance color='grey' /> {miles}{' '}
-            </p>
-          </section>
+          </Link>
         ))}
       </section>
     </main>
