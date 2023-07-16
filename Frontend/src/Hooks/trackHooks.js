@@ -17,23 +17,32 @@ export const useTrackHooks = () => {
         setTracksData(response.data.allRace);
       }
     } catch (error) {
-      console.log(error);
       setLoading(false);
-      setError({ error: true, errMessage: error.response.data.msg.message });
+      setError({
+        error: true,
+        errMessage:
+          error.response && error.response.data
+            ? error.response.data.msg.message
+            : error.message,
+      });
     }
   };
 
   const getSingleTrack = async (trackId) => {
     try {
       const response = await axios.get(`${baseUrl}/races/${trackId}`);
-      console.log(response);
       if (response) {
         setSingleTrack(response.data.race);
       }
     } catch (error) {
-      console.log(error);
       setLoading(false);
-      setError({ error: true, errMessage: error.response.data });
+      setError({
+        error: true,
+        errMessage:
+          error.response && error.response.data
+            ? error.response.data.msg.message
+            : error.message,
+      });
     }
   };
 
@@ -51,7 +60,13 @@ export const useTrackHooks = () => {
     } catch (error) {
       console.log(error);
       setLoading(false);
-      setError({ error: true, errMessage: error.response.data.msg.message });
+      setError({
+        error: true,
+        errMessage:
+          error.response && error.response.data
+            ? error.response.data.msg.message
+            : error.message,
+      });
     }
   };
 
@@ -71,7 +86,13 @@ export const useTrackHooks = () => {
     } catch (error) {
       console.log(error);
       setRemove(false);
-      setError({ error: true, errMessage: error.response.data.msg.message });
+      setError({
+        error: true,
+        errMessage:
+          error.response && error.response.data
+            ? error.response.data.msg.message
+            : error.message,
+      });
     }
   };
 

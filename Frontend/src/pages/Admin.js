@@ -47,7 +47,7 @@ function Admin() {
 
   useEffect(() => {
     getAllTracks();
-  }, []);
+  }, [getAllTracks]);
 
   //   Delet track from databse based on the id of the cliked track
   const handleDelete = (id) => {
@@ -122,26 +122,30 @@ function Admin() {
       </form>
 
       <section className='tracksWrapper'>
-        {tracksData.map(({ _id, trackName, location, miles }) => (
-          <section className='track' key={_id}>
-            <h4>
-              {' '}
-              <ImRoad color='grey' /> {trackName}
-            </h4>
-            <p>
-              {' '}
-              <FaLocationArrow color='grey' /> {location}{' '}
-            </p>
-            <p>
-              {' '}
-              <GiPathDistance color='grey' /> {miles}{' '}
-            </p>
+        {tracksData.length === 0 ? (
+          <p> Loading....</p>
+        ) : (
+          tracksData.map(({ _id, trackName, location, miles }) => (
+            <section className='track' key={_id}>
+              <h4>
+                {' '}
+                <ImRoad color='grey' /> {trackName}
+              </h4>
+              <p>
+                {' '}
+                <FaLocationArrow color='grey' /> {location}{' '}
+              </p>
+              <p>
+                {' '}
+                <GiPathDistance color='grey' /> {miles}{' '}
+              </p>
 
-            <button onClick={() => handleDelete(_id)} className='Btn'>
-              {remove ? 'Deleting... ' : <MdDelete /> && 'Delete '}
-            </button>
-          </section>
-        ))}
+              <button onClick={() => handleDelete(_id)} className='Btn'>
+                {remove ? 'Deleting... ' : <MdDelete /> && 'Delete '}
+              </button>
+            </section>
+          ))
+        )}
       </section>
     </div>
   );

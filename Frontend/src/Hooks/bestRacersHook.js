@@ -8,69 +8,153 @@ export const useBestRacers = () => {
   const [loading, setLoading] = useState(false);
   const [remove, setRemove] = useState(false);
   const [bestRacers, setBestRacers] = useState([]);
-  const [singleTrack, setSingleTrack] = useState([]);
+  const [editRacer, setEditRacer] = useState([]);
 
-  const getBestRacers = async () => {
+  const getAllBestRacers = async () => {
     try {
       const response = await axios.get(`${baseUrl}/racers`);
-      console.log(response);
       if (response) {
         setBestRacers(response.data.allRacers);
       }
     } catch (error) {
-      console.log(error);
+      console.log('Error:', error); // Log the error object to the console
+      console.log('Error Message:', error.message); // Log the specific error message to the console
+
       setLoading(false);
-      setError({ error: true, errMessage: error.response.data.msg.message });
+      setError({
+        error: true,
+        errMessage:
+          error.response && error.response.data
+            ? error.response.data.msg.message
+            : error.message,
+      });
+    }
+  };
+  const getBestRacers = async (racerId) => {
+    try {
+      const response = await axios.get(`${baseUrl}/racers/${racerId}`);
+      if (response) {
+        setEditRacer(response.data.racer);
+      }
+    } catch (error) {
+      console.log('Error:', error); // Log the error object to the console
+      console.log('Error Message:', error.message); // Log the specific error message to the console
+
+      setLoading(false);
+      setError({
+        error: true,
+        errMessage:
+          error.response && error.response.data
+            ? error.response.data.msg.message
+            : error.message,
+      });
     }
   };
 
-  const createNewTracks = async (formdata) => {
+  const addBestRacer = async (formdata) => {
     try {
       setLoading(true);
-      const response = await axios.post(`${baseUrl}/races`, formdata);
+      const response = await axios.post(`${baseUrl}/racers`, formdata);
       if (response) {
-        setSuccess('Tracks created succesfully');
+        setSuccess('Best racer added succesfully');
+
+        // The message will disappear after 3s
+        setTimeout(() => {
+          setSuccess('');
+        }, 3000);
         setLoading(false);
 
         // Refetch all tracks after creating new tracks to update the page
-        getBestRacers();
+        getAllBestRacers();
       }
     } catch (error) {
+      console.log('Error:', error); // Log the error object to the console
+      console.log('Error Message:', error.message); // Log the specific error message to the console
       console.log(error);
       setLoading(false);
-      setError({ error: true, errMessage: error.response.data.msg.message });
+      setError({
+        error: true,
+        errMessage:
+          error.response && error.response.data
+            ? error.response.data.msg.message
+            : error.message,
+      });
     }
   };
 
-  const deleteTrack = async (trackID) => {
+  const editBestRacer = async (racerId, formdata) => {
+    try {
+      setLoading(true);
+      const response = await axios.put(
+        `${baseUrl}/racers/${racerId}`,
+        formdata,
+      );
+      if (response) {
+        setSuccess('Best racer updated succesfully');
+
+        // The message will disappear after 3s
+        setTimeout(() => {
+          setSuccess('');
+        }, 3000);
+        setLoading(false);
+
+        // Refetch all tracks after creating new tracks to update the page
+        getAllBestRacers();
+      }
+    } catch (error) {
+      setLoading(false);
+      setError({
+        error: true,
+        errMessage:
+          error.response && error.response.data
+            ? error.response.data.msg.message
+            : error.message,
+      });
+    }
+  };
+
+  const deleteBestRacer = async (trackID) => {
     try {
       setRemove(true);
       // Pass the Id as parameter to delet
-      const response = await axios.delete(`${baseUrl}/races/${trackID}`);
+      const response = await axios.delete(`${baseUrl}/racers/${trackID}`);
 
       if (response) {
-        setSuccess('Tracks created succesfully');
+        setSuccess('Racer deleted succesfully');
         setRemove(false);
 
+        // The message will disappear after 3s
+        setTimeout(() => {
+          setSuccess('');
+        }, 3000);
+
         // Refetch all tracks upon delete
-        getBestRacers();
+        getAllBestRacers();
       }
     } catch (error) {
       console.log(error);
       setRemove(false);
-      setError({ error: true, errMessage: error.response.data.msg.message });
+      setError({
+        error: true,
+        errMessage:
+          error.response && error.response.data
+            ? error.response.data.msg.message
+            : error.message,
+      });
     }
   };
 
   return {
-    createNewTracks,
+    addBestRacer,
+    getAllBestRacers,
     getBestRacers,
     success,
     error,
     loading,
     bestRacers,
-    deleteTrack,
+    editRacer,
+    deleteBestRacer,
+    editBestRacer,
     remove,
-    singleTrack,
   };
 };
