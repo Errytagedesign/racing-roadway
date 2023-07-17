@@ -44,7 +44,6 @@ function Track() {
     }
     getAllBestRacers();
   }, []);
-  console.log(bestRacers);
 
   // Get input field values upon file changes
   const handleChange = (e) => {
@@ -72,12 +71,11 @@ function Track() {
   const handleEdit = async (id) => {
     // set show to true to bring the form
     const racerId = id;
-
-    // Check if editRacer is already populated
-    if (!editRacer || editRacer._id !== racerId) {
+    if (racerId) {
       // Fetch the racer data only if it's not already available or if it's for a different racer
       await getBestRacers(racerId);
     }
+
     setShow(true);
 
     console.log(editRacer._id);
@@ -230,7 +228,7 @@ function Track() {
             />
           </div>
           <div className='btnWrapper'>
-            {editRacer ? (
+            {editRacer._id ? (
               <button
                 disabled={loading}
                 type='submit'

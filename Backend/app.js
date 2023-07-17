@@ -10,7 +10,7 @@ const cors = require('cors');
 // Enable CORS
 app.use(cors());
 // After deploying the backend to render, they'll provide their default port, so use that we'll set it to accept their port or 5000 port on your computer, you can change the 5000 to any number
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 2000;
 
 // Use json method to return response
 app.use(express.json());
